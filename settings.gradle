@@ -1,0 +1,7 @@
+rootProject.name = 'pmmp-spring-ms'
+include 'user-service'
+include 'pet-service'
+include 'statistics-service'
+include 'disease-service'
+include 'api-gateway'
+
