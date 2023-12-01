@@ -9,8 +9,6 @@ import java.util.Date;
 @Data
 @Document
 public class Vaccine {
-    @Id
-    private String id;
     private String name;
     private String description;
     private Date date;

@@ -1,6 +1,7 @@
 package com.ppyd.petservice.models;
 
 import lombok.Data;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Pet {
     @Id
     private String id;
-    private String ownerId;
+    private ObjectId ownerId;
     private String name;
     private String type;
     private String breed;

@@ -14,7 +14,7 @@ import java.util.Optional;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
-@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "*")
 @RequestMapping(path = "/users")
 public class UserController {
     @Autowired
@@ -42,7 +42,7 @@ public class UserController {
     public void editUser(@RequestBody User user) {
         Optional<User> u = userRepo.findById(user.getId());
         if(u.isEmpty()) {
-            throw new ResponseStatusException(NOT_FOUND, "Unable to find resource");
+            throw new ResponseStatusException(NOT_FOUND, "No se encontro el usuario");
         }
         userRepo.save(user);
     }
