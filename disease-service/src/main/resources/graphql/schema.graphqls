@@ -1,0 +1,8 @@
+type Query {
+    allDisease(type: String): [DiseaseName]
+}
+
+type DiseaseName {
+    id: ID
+    name: String
+}
