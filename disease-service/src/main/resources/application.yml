@@ -1,0 +1,6 @@
+spring:
+  graphql:
+    globalcors:
+      allowed-origins: "*"
+      allowedHeaders: "*"
+      allowedMethods: "*"

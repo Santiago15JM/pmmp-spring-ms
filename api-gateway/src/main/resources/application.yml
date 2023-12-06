@@ -7,3 +7,8 @@ spring:
             allowedOrigins: "*"
             allowedHeaders: "*"
             allowedMethods: "*"
+  graphql:
+    globalcors:
+      allowed-origins: "*"
+      allowedHeaders: "*"
+      allowedMethods: "*"

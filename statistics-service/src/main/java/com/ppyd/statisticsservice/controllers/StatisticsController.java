@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Objects;
 
 @RestController
-//@CrossOrigin("*")
+@CrossOrigin("*")
 @RequestMapping("/stats")
 public class StatisticsController {
 

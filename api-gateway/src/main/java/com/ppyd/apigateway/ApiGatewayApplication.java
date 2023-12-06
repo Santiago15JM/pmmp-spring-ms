@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 public class ApiGatewayApplication {
 
 	public static void main(String[] args) {
+		System.err.println("SISAS");
 		SpringApplication.run(ApiGatewayApplication.class, args);
 	}
 
