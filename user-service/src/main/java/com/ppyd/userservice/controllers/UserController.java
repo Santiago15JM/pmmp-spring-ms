@@ -2,56 +2,43 @@ package com.ppyd.userservice.controllers;
 
 import com.ppyd.userservice.models.User;
 import com.ppyd.userservice.models.dto.LoginDTO;
-import com.ppyd.userservice.repository.UserRepository;
+import com.ppyd.userservice.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
-
-import static org.springframework.http.HttpStatus.NOT_FOUND;
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "/users")
 public class UserController {
     @Autowired
-    private UserRepository userRepo;
+    private UserService userService;
 
     @GetMapping(value = "/getAll")
     public List<User> getAll() {
-        return userRepo.findAll();
+        return userService.getAll();
     }
 
     @PostMapping("/addUser")
     @ResponseStatus(HttpStatus.CREATED)
     public void createUser(@RequestBody User user) {
-        userRepo.save(user);
+        userService.createUser(user);
     }
 
     @GetMapping("/getUser")
     public User getUser(@RequestParam String id) {
-        Optional<User> u = userRepo.findById(id);
-        if(u.isPresent()) return u.get();
-        throw new ResponseStatusException(NOT_FOUND, "Unable to find resource");
+        return userService.getUser(id);
     }
 
     @PutMapping("/editUser")
     public void editUser(@RequestBody User user) {
-        Optional<User> u = userRepo.findById(user.getId());
-        if(u.isEmpty()) {
-            throw new ResponseStatusException(NOT_FOUND, "No se encontro el usuario");
-        }
-        userRepo.save(user);
+        userService.editUser(user);
     }
 
     @PostMapping("/login")
     public String login(@RequestBody LoginDTO loginDTO) {
-        var user = userRepo.loginUser(loginDTO.getEmail(), loginDTO.getPassword());
-
-        if (user != null) return user.getId();
-        throw new ResponseStatusException(NOT_FOUND, "User doesn't exist");
+        return userService.login(loginDTO);
     }
 }
